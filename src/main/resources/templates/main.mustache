@@ -1,5 +1,24 @@
 <html>
+
 <body>
-    <dir>Is there your info? {{some}}</dir>
+    <div>
+        <form method="post">
+            <input type="text" name="model" placeholder="Model" />
+            <input type="number" name="price" placeholder="Price">
+            <input type="number" name="hd" placeholder="HD volume">
+            <input type="number" name="ram" placeholder="RAM volume">
+            <button type="submit">Додати</button>
+        </form>
+    </div>
+    <div>Laptop list</div>
+    {{#laptops}}
+    <div>
+        <b>{{id}}</b>
+        <span>{{model}}</span>
+        <i>{{price}}</i>
+        <i>{{hd}}</i>
+        <i>{{ram}}</i>
+    </div>
+    {{/laptops}}
 </body>
 </html>
