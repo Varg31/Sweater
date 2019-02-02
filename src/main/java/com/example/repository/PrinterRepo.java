@@ -1,9 +1,9 @@
 package com.example.repository;
 
-import com.example.domain.Laptop;
+import com.example.domain.Printer;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LaptopRepo extends CrudRepository<Laptop, Integer> {
+public interface PrinterRepo extends CrudRepository<Printer,Integer> {
 }

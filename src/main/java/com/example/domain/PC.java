@@ -6,11 +6,11 @@ import java.util.Objects;
 
 @Entity
 @Table(name="laptop")
-public class Laptop implements Serializable {
+public class PC implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="laptop_id", nullable = false)
-    private Long id;
+    private Integer id;
     @Column(name="model", nullable = false, length = 45)
     private Long model;
     @Column(name="ram")
@@ -19,29 +19,28 @@ public class Laptop implements Serializable {
     private double speed;
     @Column(name="hd")
     private double hd;
+    @Column(name="cd", length = 10)
+    private String cd;
     @Column(name="price")
     private double price;
-    @Column(name="screen_square", nullable = false)
-    private int screen;
-
     @ManyToOne
     @JoinColumn(name = "model", referencedColumnName = "city_id")
     private Product product;
 
-    public Laptop() {}
+    public PC() {}
 
-    public Laptop(Long model, short ram, double speed, double hd, double price, int screen) {
+    public PC(Long model, short ram, double speed, double hd, String cd, double price) {
         this.model = model;
         this.ram = ram;
         this.speed = speed;
         this.hd = hd;
+        this.cd = cd;
         this.price = price;
-        this.screen = screen;
     }
 
-    public Long getId() { return id; }
+    public Integer getId() { return id; }
 
-    public void setId(Long id) { this.id = id; }
+    public void setId(Integer id) { this.id = id; }
 
     public Long getModel() { return model; }
 
@@ -59,43 +58,43 @@ public class Laptop implements Serializable {
 
     public void setPrice(double price) { this.price = price; }
 
-    public int getScreen() { return screen; }
-
-    public void setScreen(int screen) { this.screen = screen; }
-
     public double getSpeed() { return speed; }
 
     public void setSpeed(double speed) { this.speed = speed; }
 
+    public String getCd() { return cd; }
+
+    public void setCd(String cd) { this.cd = cd; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Laptop)) return false;
-        Laptop laptop = (Laptop) o;
-        return ram == laptop.ram &&
-                Double.compare(laptop.speed, speed) == 0 &&
-                Double.compare(laptop.hd, hd) == 0 &&
-                Double.compare(laptop.price, price) == 0 &&
-                screen == laptop.screen &&
-                id.equals(laptop.id) &&
-                model.equals(laptop.model);
+        if (!(o instanceof PC)) return false;
+        PC pc = (PC) o;
+        return ram == pc.ram &&
+                Double.compare(pc.speed, speed) == 0 &&
+                Double.compare(pc.hd, hd) == 0 &&
+                Double.compare(pc.price, price) == 0 &&
+                id.equals(pc.id) &&
+                model.equals(pc.model) &&
+                cd.equals(pc.cd);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, model, ram, speed, hd, price, screen);
+        return Objects.hash(id, model, ram, speed, hd, cd, price);
     }
 
     @Override
     public String toString() {
-        return "Laptop{" +
+        return "PC{" +
                 "id=" + id +
                 ", model='" + model + '\'' +
                 ", ram=" + ram +
                 ", speed=" + speed +
                 ", hd=" + hd +
+                ", cd='" + cd + '\'' +
                 ", price=" + price +
-                ", screen=" + screen +
                 '}';
     }
 }

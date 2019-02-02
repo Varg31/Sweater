@@ -1,9 +1,9 @@
 package com.example.repository;
 
-import com.example.domain.Laptop;
+import com.example.domain.PC;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LaptopRepo extends CrudRepository<Laptop, Integer> {
+public interface PCRepo extends CrudRepository<PC, Integer> {
 }

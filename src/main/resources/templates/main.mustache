@@ -2,22 +2,38 @@
 
 <body>
     <div>
+        <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </div>
+    <div>
         <form method="post">
             <input type="text" name="model" placeholder="Model" />
-            <input type="number" name="price" placeholder="Price">
-            <input type="number" name="hd" placeholder="HD volume">
             <input type="number" name="ram" placeholder="RAM volume">
+            <input type="double" name="speed" placeholder="Processor speed">
+            <input type="number" name="hd" placeholder="HD volume">
+            <input type="number" name="screen" placeholder="Screen diagonal">
+            <input type="number" name="price" placeholder="Price">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
             <button type="submit">Додати</button>
         </form>
     </div>
     <div>Laptop list</div>
+    <form method="post" action="filter">
+        <input type="text" name="filter">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Search</button>
+    </form>
     {{#laptops}}
     <div>
         <b>{{id}}</b>
-        <span>{{model}}</span>
-        <i>{{price}}</i>
-        <i>{{hd}}</i>
-        <i>{{ram}}</i>
+        <span>{{model}} |</span>
+        <i>{{ram}}  |</i>
+        <i>{{speed}}  |</i>
+        <i>{{price}}    |</i>
+        <i>{{hd}}   |</i>
+        <i>{{screen}}</i>
     </div>
     {{/laptops}}
 </body>
