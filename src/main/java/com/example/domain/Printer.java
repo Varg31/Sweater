@@ -20,7 +20,7 @@ public class Printer implements Serializable {
     @Column(name="price")
     private int price;
     @ManyToOne
-    @JoinColumn(name = "model", referencedColumnName = "city_id")
+    @JoinColumn(name = "model", referencedColumnName = "model", insertable=false, updatable=false)
     private Product product;
 
     public Printer() {

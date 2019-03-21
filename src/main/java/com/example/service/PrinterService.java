@@ -20,7 +20,7 @@ public class PrinterService {
     }
 
     public List<Printer> getAllPrinters() {
-        return (List<Printer>) printerRepo.findAll();
+        return printerRepo.findAll();
     }
 
     @Transactional

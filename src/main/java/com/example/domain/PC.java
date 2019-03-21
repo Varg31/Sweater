@@ -5,11 +5,11 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name="laptop")
+@Table(name="pc")
 public class PC implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="laptop_id", nullable = false)
+    @Column(name="pc_id", nullable = false)
     private Integer id;
     @Column(name="model", nullable = false, length = 45)
     private Long model;
@@ -24,7 +24,7 @@ public class PC implements Serializable {
     @Column(name="price")
     private double price;
     @ManyToOne
-    @JoinColumn(name = "model", referencedColumnName = "city_id")
+    @JoinColumn(name = "model", referencedColumnName = "model", insertable=false, updatable=false)
     private Product product;
 
     public PC() {}

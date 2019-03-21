@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.domain.Laptop;
+import com.example.repository.LaptopRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,7 @@ import java.util.Map;
 @Controller
 public class AppController {
     @Autowired
-    private PCRepo laptopRepo;
+    private LaptopRepo laptopRepo;
 
     @GetMapping("/")
     public String greeting(Map<String, Object> model) {
@@ -27,7 +28,7 @@ public class AppController {
     }
 
     @PostMapping("/main")
-    public String add(@RequestParam String model, short ram, double speed, double hd, int price, int screen,
+    public String add(@RequestParam Long model, short ram, double speed, double hd, int price, int screen,
                       Map<String, Object> modelMap) {
         Laptop laptop = new Laptop(model, ram, speed, hd, price, screen);
         laptopRepo.save(laptop);

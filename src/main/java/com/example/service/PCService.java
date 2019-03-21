@@ -19,7 +19,7 @@ public class PCService {
     }
 
     public List<PC> getAllLaptops() {
-        return (List<PC>) pcRepo.findAll();
+        return pcRepo.findAll();
     }
 
     @Transactional

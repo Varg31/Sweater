@@ -19,7 +19,7 @@ public class LaptopService {
     }
 
     public List<Laptop> getAllLaptops() {
-        return (List<Laptop>) laptopRepo.findAll();
+        return laptopRepo.findAll();
     }
 
     @Transactional

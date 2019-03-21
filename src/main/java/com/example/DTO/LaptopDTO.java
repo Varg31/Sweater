@@ -19,7 +19,7 @@ public class LaptopDTO extends ResourceSupport {
     }
 
     public Long getCode() { return laptop.getId(); }
-    public String getModel() { return laptop.getModel(); }
+    public Long getModel() { return laptop.getModel(); }
     public short getRam() { return laptop.getRam(); }
     public double getSpeed() { return laptop.getSpeed(); }
     public double getHd() { return laptop.getHd(); }

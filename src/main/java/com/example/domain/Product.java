@@ -1,7 +1,5 @@
 package com.example.domain;
 
-import org.springframework.context.annotation.Primary;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
@@ -17,11 +15,11 @@ public class Product implements Serializable {
     @Column(name="type", length = 45)
     private String type;
 
-    @OneToMany(mappedBy = "model")
-    private Set<Laptop> leptops;
-    @OneToMany(mappedBy = "model")
+    @OneToMany(mappedBy = "product")
+    private Set<Laptop> laptops;
+    @OneToMany(mappedBy = "product")
     private Set<PC> pcList;
-    @OneToMany(mappedBy = "model")
+    @OneToMany(mappedBy = "product")
     private Set<Printer> printers;
 
     public Product() {
@@ -56,4 +54,16 @@ public class Product implements Serializable {
     public void setType(String type) {
         this.type = type;
     }
+
+    public Set<Laptop> getLaptops() { return laptops; }
+
+    public void setLaptops(Set<Laptop> leptops) { this.laptops = leptops; }
+
+    public Set<PC> getPcList() { return pcList; }
+
+    public void setPcList(Set<PC> pcList) { this.pcList = pcList; }
+
+    public Set<Printer> getPrinters() { return printers; }
+
+    public void setPrinters(Set<Printer> printers) { this.printers = printers; }
 }

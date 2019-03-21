@@ -25,7 +25,7 @@ public class Laptop implements Serializable {
     private int screen;
 
     @ManyToOne
-    @JoinColumn(name = "model", referencedColumnName = "city_id")
+    @JoinColumn(name = "model", referencedColumnName = "model", insertable=false, updatable=false)
     private Product product;
 
     public Laptop() {}
