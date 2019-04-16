@@ -24,13 +24,13 @@ public class Laptop implements Serializable {
     @Column(name="screen_square", nullable = false)
     private int screen;
 
-    @ManyToOne
-    @JoinColumn(name = "model", referencedColumnName = "model", insertable=false, updatable=false)
-    private Product product;
+//    @ManyToOne
+//    @JoinColumn(name = "model", referencedColumnName = "model", insertable=false, updatable=false)
+//    private Product product;
 
     public Laptop() {}
 
-    public Laptop(Long model, short ram, double speed, double hd, double price, int screen) {
+    public Laptop(Long model, short ram, double speed, double hd, double price, int screen, User author) {
         this.model = model;
         this.ram = ram;
         this.speed = speed;

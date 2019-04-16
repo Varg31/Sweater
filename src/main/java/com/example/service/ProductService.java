@@ -44,7 +44,7 @@ public class ProductService {
         productNew.setMaker(product.getMaker());
         productNew.setType(product.getType());
         productNew.setModel(product.getModel());
-        productNew.setLaptops(product.getLaptops());
+        //productNew.setLaptops(product.getLaptops());
         productNew.setPcList(product.getPcList());
         productNew.setPrinters(product.getPrinters());
 

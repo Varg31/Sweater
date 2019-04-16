@@ -15,8 +15,8 @@ public class Product implements Serializable {
     @Column(name="type", length = 45)
     private String type;
 
-    @OneToMany(mappedBy = "product")
-    private Set<Laptop> laptops;
+//    @OneToMany(mappedBy = "product")
+//    private Set<Laptop> laptops;
     @OneToMany(mappedBy = "product")
     private Set<PC> pcList;
     @OneToMany(mappedBy = "product")
@@ -55,9 +55,9 @@ public class Product implements Serializable {
         this.type = type;
     }
 
-    public Set<Laptop> getLaptops() { return laptops; }
-
-    public void setLaptops(Set<Laptop> leptops) { this.laptops = leptops; }
+//    public Set<Laptop> getLaptops() { return laptops; }
+//
+//    public void setLaptops(Set<Laptop> leptops) { this.laptops = leptops; }
 
     public Set<PC> getPcList() { return pcList; }
 
