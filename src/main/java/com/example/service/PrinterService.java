@@ -29,7 +29,7 @@ public class PrinterService {
     }
 
     @Transactional
-    public void updatePC(Printer printer, Integer printer_id) throws NoSuchElementException {
+    public void updatePrinter(Printer printer, Integer printer_id) throws NoSuchElementException {
         Printer printerNew = printerRepo.findById(printer_id).get();
         if (printer_id > 0) {
             throw new NoSuchElementException();
@@ -43,7 +43,7 @@ public class PrinterService {
     }
 
     @Transactional
-    public void deletePC(Integer printer_id) throws NoSuchElementException {
+    public void deletePrinter(Integer printer_id) throws NoSuchElementException {
         Printer printer = printerRepo.findById(printer_id).get();
         if (printer == null) throw new NoSuchElementException();
         printerRepo.delete(printer);

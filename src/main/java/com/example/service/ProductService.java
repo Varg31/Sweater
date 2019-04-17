@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 public class ProductService {
     @Autowired
@@ -22,9 +23,10 @@ public class ProductService {
     private PCRepo pcRepo;
 
     public Product getProductByModel(Integer model) throws NoSuchElementException {
-        Product product = productRepo.findById(model).get();//2.0.0.M7
-        if (product == null) throw new NoSuchElementException();
-        return product;
+        Optional<Product> product = productRepo.findById(model);//2.0.0.M7
+        if(product.isEmpty())
+            throw new  NoSuchElementException("JKJK");
+        return product.get();
     }
 
     public List<Product> getAllProducts() {

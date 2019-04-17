@@ -12,8 +12,11 @@ import java.util.Collections;
 @Controller
 @RequestMapping("/registration")
 public class RegistrationController {
-    @Autowired
     private UserRepo userRepo;
+
+    public RegistrationController(UserRepo userRepo) {
+        this.userRepo = userRepo;
+    }
 
     @GetMapping
     public String registration() {

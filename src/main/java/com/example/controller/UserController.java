@@ -1,7 +1,6 @@
 package com.example.controller;
 
-import com.example.domain.Role;
-import com.example.domain.User;
+import com.example.domain.*;
 import com.example.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -9,17 +8,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/user")
 @PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
-    @Autowired
+
     private UserRepo userRepo;
+
+    public UserController(UserRepo userRepo) {
+        this.userRepo = userRepo;
+    }
 
     @GetMapping
     public String userList(Model model) {
