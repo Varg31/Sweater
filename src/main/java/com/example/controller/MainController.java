@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -105,5 +106,10 @@ public class MainController {
         modelMap.addAttribute("messages", messages);
 
         return "message";
+    }
+
+    @DeleteMapping("/message")
+    public void deleteMessage(@RequestParam Long messageId, Model model) {
+        messageRepo.deleteById(messageId);
     }
 }
