@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name="laptop")
-public class Laptop implements Serializable {
+//@Table(name="laptop")
+public class Laptop implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="laptop_id", nullable = false)

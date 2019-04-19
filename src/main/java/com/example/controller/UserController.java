@@ -1,8 +1,7 @@
 package com.example.controller;
 
 import com.example.domain.*;
-import com.example.repository.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.service.UserService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,15 +15,27 @@ import java.util.stream.Collectors;
 @PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
 
-    private UserRepo userRepo;
+    private UserService userService;
 
-    public UserController(UserRepo userRepo) {
-        this.userRepo = userRepo;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping
     public String userList(Model model) {
-        model.addAttribute("users", userRepo.findAll());
+        model.addAttribute("users", userService.getAllUsers());
+
+        return "userList";
+    }
+
+    @PostMapping("{userId}")
+    public String deleteUser(@PathVariable("userId") User user, Model model) {
+        userService.deleteUser(user.getId());
+
+        model.addAttribute("users", userService.getAllUsers());
+        model.addAttribute("message", "User successfully deleted");
+
+        model.addAttribute("Something went wrong");
 
         return "userList";
     }
@@ -55,8 +66,8 @@ public class UserController {
                 user.getRoles().add(Role.valueOf(key));
             }
         }
-        userRepo.save(user);
+        userService.createUser(user);
 
-        return"redirect:/user";
+        return "redirect:/user";
     }
 }
