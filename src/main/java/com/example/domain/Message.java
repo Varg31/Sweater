@@ -5,7 +5,8 @@ import javax.persistence.*;
 @Entity
 public class Message {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "message_id", updatable = false, nullable = false)
     private Long id;
     private String text;
     private String tag;

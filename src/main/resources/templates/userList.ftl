@@ -19,7 +19,6 @@
                 <td><#list user.roles as role>${role}<#sep>, </#list></td>
                 <td>${user.activationCode?exists?then("Non", "Activated")}</td>
                 <td><a href="/user/${user.id}">Edit</a> </td>
-                <td><a href="/user?userId=${user.id}">Delete</a> </td>
             </tr>
         </#list>
         </tbody>
