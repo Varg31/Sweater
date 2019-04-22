@@ -6,10 +6,10 @@ import java.util.Objects;
 
 @Entity
 @Table(name="laptop")
-public class Laptop implements Serializable {
+public class Laptop implements Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="laptop_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "laptop_id", updatable = false, nullable = false)
     private Long id;
     @Column(name="model", nullable = false, length = 45)
     private Long model;

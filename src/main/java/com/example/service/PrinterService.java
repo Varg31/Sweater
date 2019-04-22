@@ -1,6 +1,5 @@
 package com.example.service;
 
-import com.example.domain.PC;
 import com.example.domain.Printer;
 import com.example.repository.PrinterRepo;
 import org.springframework.beans.factory.annotation.Autowired;

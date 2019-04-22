@@ -2,11 +2,14 @@
 
 <@c.page>
     <div>List of users</div>
+    <div>${message?ifExists}</div>
 
     <table>
         <thread>
             <th>Name</th>
             <th>Role</th>
+            <th>Active status</th>
+            <th></th>
             <th></th>
         </thread>
         <tbody>
@@ -14,6 +17,7 @@
             <tr>
                 <td>${user.username}</td>
                 <td><#list user.roles as role>${role}<#sep>, </#list></td>
+                <td>${user.activationCode?exists?then("Non", "Activated")}</td>
                 <td><a href="/user/${user.id}">Edit</a> </td>
             </tr>
         </#list>

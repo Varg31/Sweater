@@ -24,8 +24,8 @@ public class ProductService {
 
     public Product getProductByModel(Integer model) throws NoSuchElementException {
         Optional<Product> product = productRepo.findById(model);//2.0.0.M7
-        if(product.isEmpty())
-            throw new  NoSuchElementException("JKJK");
+        if (product.isEmpty())
+            throw new NoSuchElementException("JKJK");
         return product.get();
     }
 

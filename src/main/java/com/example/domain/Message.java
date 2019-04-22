@@ -5,8 +5,9 @@ import javax.persistence.*;
 @Entity
 public class Message {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "message_id", updatable = false, nullable = false)
+    private Long id;
     private String text;
     private String tag;
 
@@ -29,7 +30,7 @@ public class Message {
         return author != null? author.getUsername() : "<none>";
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

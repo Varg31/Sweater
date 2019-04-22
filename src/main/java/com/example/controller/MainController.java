@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,7 +55,7 @@ public class MainController {
     public String add(
             @AuthenticationPrincipal User user,
             @RequestParam Long model, short ram, double speed, double hd, int price, int screen,
-                      Model modelMap) {
+            Model modelMap) {
         Laptop laptop = new Laptop(model, ram, speed, hd, price, screen, user);
         laptopRepo.save(laptop);
 
@@ -85,7 +84,7 @@ public class MainController {
             @AuthenticationPrincipal User user,
             @RequestParam String text,
             @RequestParam String tag, Model modelMap,
-            @RequestParam("file")MultipartFile file) throws IOException {
+            @RequestParam("file") MultipartFile file) throws IOException {
         Message message = new Message(text, tag, user);
 
         if (file != null && !file.getOriginalFilename().isEmpty()) {
@@ -106,10 +105,5 @@ public class MainController {
         modelMap.addAttribute("messages", messages);
 
         return "message";
-    }
-
-    @DeleteMapping("/message")
-    public void deleteMessage(@RequestParam Long messageId, Model model) {
-        messageRepo.deleteById(messageId);
     }
 }

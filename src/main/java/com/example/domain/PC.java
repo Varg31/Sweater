@@ -8,8 +8,8 @@ import java.util.Objects;
 @Table(name="pc")
 public class PC implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="pc_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "pc_id", updatable = false, nullable = false)
     private Integer id;
     @Column(name="model", nullable = false, length = 45)
     private Long model;
